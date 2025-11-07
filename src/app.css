@@ -1,0 +1,18 @@
+@import 'tailwindcss';
+
+@theme {
+	--default-font-family: 'Nunito';
+	--font-display: 'Quicksand', sans-serif;
+
+	--color-cloud-drift: #fafafa;
+	--color-misty-aqua: #c0d3d6;
+	--color-soft-charcoal: #5e5e5e;
+	--color-dusk-teal: #84a9b1;
+
+	--color-midnight-slate: #1e252d;
+	--color-deep-ocean: #35424d;
+	--color-pale-moon: #c7d2da;
+	--color-smoky-blue: #8ca4b7;
+
+	--color-golden-zing: #ffc72c;
+}
