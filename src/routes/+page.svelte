@@ -88,6 +88,16 @@
 	});
 </script>
 
+<svelte:head>
+	<title>{data.isConspiracy ? 'ACCESS GRANTED: Rishvic | UNREDACTED' : 'Rishvic - Home'}</title>
+	<meta
+		name="description"
+		content={data.isConspiracy
+			? 'What you were meant to see is a lie. This is the unredacted digital archive of Rishvic. We see you.'
+			: 'The digital memory of Rishvic. This is my chosen legacy.'}
+	/>
+</svelte:head>
+
 <div
 	bind:this={containerEl}
 	onscroll={measureVariables}
