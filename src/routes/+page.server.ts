@@ -10,8 +10,8 @@ export const load: PageServerLoad = async ({ setHeaders }) => {
 		const crypto = await import('node:crypto');
 		const randomBytes = crypto.webcrypto.getRandomValues(new Uint16Array(1));
 		isConspiracy = (randomBytes[0] & 0xfff) === 42;
-	} catch {
-		console.log('Could not import node:crypto');
+	} catch (err) {
+		console.warn(new Error('Error importing node:crypto', { cause: err }));
 	}
 
 	const myData = jsonLd<ProfilePage>({
