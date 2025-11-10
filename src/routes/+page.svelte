@@ -89,7 +89,7 @@
 </script>
 
 <svelte:head>
-	<title>{data.isConspiracy ? 'ACCESS GRANTED: Rishvic | UNREDACTED' : 'Rishvic - Home'}</title>
+	<title>{data.isConspiracy ? 'ACCESS GRANTED: Rishvic | UNREDACTED' : 'Rishvic | Home'}</title>
 	<meta
 		name="description"
 		content={data.isConspiracy
