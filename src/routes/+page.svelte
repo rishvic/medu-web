@@ -1,9 +1,9 @@
 <script lang="ts">
+	import type { PageProps } from './$types';
 	import { onMount } from 'svelte';
 	import { on } from 'svelte/events';
 	import { MediaQuery } from 'svelte/reactivity';
 	import { innerHeight } from 'svelte/reactivity/window';
-	import type { PageProps } from './$types';
 	import HandEye from 'phosphor-svelte/lib/HandEye';
 	import HandPeace from 'phosphor-svelte/lib/HandPeace';
 	import JsSpringEngine from '$lib/spring/js';
@@ -96,6 +96,8 @@
 			? 'What you were meant to see is a lie. This is the unredacted digital archive of Rishvic. We see you.'
 			: 'The digital memory of Rishvic. This is my chosen legacy.'}
 	/>
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+	{@html data.myData}
 </svelte:head>
 
 <div
