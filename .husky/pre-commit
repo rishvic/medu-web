@@ -8,3 +8,7 @@ cat >"${GIT_CONSTANTS_FILE}" <<EOF
 // Timestamp of the last commit.
 export const DATE_MODIFIED = '${DATE_MODIFIED}';
 EOF
+
+git add "${GIT_CONSTANTS_FILE}"
+
+echo "Successfully updated and staged DATE_MODIFIED: '${DATE_MODIFIED}'"
