@@ -7,3 +7,6 @@ bun.lockb
 
 # Miscellaneous
 /static/
+
+# Cloudflare worker types
+/src/worker-configuration.d.ts
