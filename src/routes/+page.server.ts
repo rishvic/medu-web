@@ -1,7 +1,7 @@
 import type { PageServerLoad } from './$types';
 import type { ProfilePage } from 'schema-dts';
 import { jsonLd } from '$lib/server/jsonLd';
-import { DATE_CREATED, DATE_MODIFIED } from '$lib/server/constants';
+import { DATE_CREATED, DATE_MODIFIED, IS_PROD_DEPLOYMENT } from '$lib/server/constants';
 
 export const load: PageServerLoad = async ({ setHeaders }) => {
 	let isConspiracy = false;
@@ -48,8 +48,12 @@ export const load: PageServerLoad = async ({ setHeaders }) => {
 		}
 	});
 
+	const standardCacheControl = IS_PROD_DEPLOYMENT
+		? 'public, max-age=86400, s-maxage=300'
+		: 'no-store';
+
 	setHeaders({
-		'Cache-Control': isConspiracy ? 'no-store' : 'public, max-age=86400, s-maxage=300'
+		'Cache-Control': isConspiracy ? 'no-store' : standardCacheControl
 	});
 
 	return {
