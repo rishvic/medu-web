@@ -13,7 +13,7 @@ export const GET: RequestHandler = async ({ url }) => {
 	return new Response(xml.toString(), {
 		headers: {
 			'Content-Type': 'application/xml',
-			'Cache-Control': 'public, max-age=0, s-maxage=3600'
+			'Cache-Control': 'no-store'
 		}
 	});
 };
