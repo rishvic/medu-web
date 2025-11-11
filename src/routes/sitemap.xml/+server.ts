@@ -1,6 +1,6 @@
 import type { RequestHandler } from './$types';
-import { SitemapStream } from 'sitemap';
-import { Readable, type Transform } from 'node:stream';
+import { SitemapStream, streamToPromise } from 'sitemap';
+import { Readable } from 'node:stream';
 import { DATE_MODIFIED } from '$lib/server/constants';
 
 export const GET: RequestHandler = async ({ url }) => {
@@ -8,9 +8,9 @@ export const GET: RequestHandler = async ({ url }) => {
 	const links = [{ url: '/', changefreq: 'daily', priority: 0.8, lastmod: DATE_MODIFIED }];
 
 	const stream = new SitemapStream({ hostname: url.origin });
-	Readable.from(links).pipe(stream);
+	const xml = await streamToPromise(Readable.from(links).pipe(stream));
 
-	return new Response(stream as unknown as ReadableStream, {
+	return new Response(xml.toString(), {
 		headers: {
 			'Content-Type': 'application/xml',
 			'Cache-Control': 'public, max-age=0, s-maxage=3600'
