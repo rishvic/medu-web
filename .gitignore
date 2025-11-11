@@ -284,5 +284,7 @@ fabric.properties
 
 # End of https://www.toptal.com/developers/gitignore/api/svelte,node,typings,dotenv,vim,visualstudiocode,webstorm+all
 
+# Wrangler/Cloudflare
 .dev.vars*
 !.dev.vars.example
+.wrangler/
