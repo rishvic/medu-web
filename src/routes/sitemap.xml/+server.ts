@@ -7,8 +7,10 @@ export const GET: RequestHandler = async ({ url }) => {
 	console.log(url);
 	const links = [{ url: '/', changefreq: 'daily', priority: 0.8, lastmod: DATE_MODIFIED }];
 
+	console.log(url);
 	const stream = new SitemapStream({ hostname: url.origin });
 	const xml = await streamToPromise(Readable.from(links).pipe(stream));
+	console.log(xml.toString());
 
 	return new Response(xml.toString(), {
 		headers: {
