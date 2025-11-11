@@ -105,31 +105,34 @@
 	onscroll={measureVariables}
 	id="main-container"
 	class="relative h-screen snap-y snap-proximity overflow-y-scroll scroll-smooth md:snap-mandatory"
-	style:--header-height={`${headerHeight}px`}
 	style:--logo-offset={computeOffset(logoPosition, innerHeight.current, headerHeight)}
 	style:--app-bar-bg-light={`rgb(from var(--color-icy-wisp) r g b / ${computePercent(innerHeight.current, mainScrollY)})`}
 	style:--app-bar-bg-dark={`rgb(from var(--color-deep-ocean) r g b / ${computePercent(innerHeight.current, mainScrollY)})`}
 >
 	<div class="h-screen snap-start bg-(--app-bar-bg-light) dark:bg-(--app-bar-bg-dark)"></div>
 	<div class="h-screen snap-start">
-		<div class="h-(--header-height) bg-(--app-bar-bg-light) md:h-24 dark:bg-(--app-bar-bg-dark)">
-			<header class="h-(--header-height) w-screen md:h-24">
-				<nav class="flex h-(--header-height) flex-row items-center justify-center md:h-24">
-					{#if data.isConspiracy}
-						<HandEye
-							color="currentColor"
-							weight="fill"
-							size={headerHeight - 16}
-							class="h-16 w-16 translate-y-(--logo-offset) text-golden-zing md:h-20 md:w-20"
-						/>
-					{:else}
-						<HandPeace
-							color="currentColor"
-							weight="fill"
-							size={headerHeight - 16}
-							class="h-16 w-16 translate-y-(--logo-offset) text-golden-zing md:h-20 md:w-20"
-						/>
-					{/if}
+		<div class="flex h-20 w-screen bg-(--app-bar-bg-light) md:h-24 dark:bg-(--app-bar-bg-dark)">
+			<header class="flex flex-1">
+				<nav class="flex flex-1 justify-center">
+					<div
+						class="flex max-w-7xl flex-1 flex-row items-center justify-center px-2 sm:px-6 lg:px-8"
+					>
+						{#if data.isConspiracy}
+							<HandEye
+								color="currentColor"
+								weight="fill"
+								size={headerHeight - 16}
+								class="h-16 w-16 translate-y-(--logo-offset) text-golden-zing md:h-20 md:w-20"
+							/>
+						{:else}
+							<HandPeace
+								color="currentColor"
+								weight="fill"
+								size={headerHeight - 16}
+								class="h-16 w-16 translate-y-(--logo-offset) text-golden-zing md:h-20 md:w-20"
+							/>
+						{/if}
+					</div>
 				</nav>
 			</header>
 		</div>
