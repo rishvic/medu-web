@@ -2,10 +2,29 @@
 	import type { PageProps } from './$types';
 	import { onMount } from 'svelte';
 	import { on } from 'svelte/events';
+	import { MediaQuery } from 'svelte/reactivity';
 	import { innerHeight } from 'svelte/reactivity/window';
 	import HandEye from 'phosphor-svelte/lib/HandEye';
 	import HandPeace from 'phosphor-svelte/lib/HandPeace';
 	import JsSpringEngine from '$lib/spring/js';
+
+	const EPS = 0.02;
+	const MAX_OVERSHOOT = 8 / 1440;
+	const M = 1;
+	const K = 100;
+	function damping(m: number, k: number, maxOvershoot: number) {
+		return 2 * Math.sqrt((k * m) / (1 + (Math.PI / (Math.LN2 + Math.log(maxOvershoot))) ** 2));
+	}
+	const MAX_DAMPING = damping(M, K, MAX_OVERSHOOT);
+
+	const medium = new MediaQuery('min-width: 48rem');
+	const overshoot = $derived(medium ? 8 : 7.2);
+	function computeDamping(mainHeight: number | undefined, overshoot: number) {
+		if (mainHeight === undefined || Math.abs(mainHeight) < EPS) {
+			return MAX_DAMPING;
+		}
+		return damping(M, K, overshoot / mainHeight);
+	}
 
 	let { data }: PageProps = $props();
 
@@ -36,14 +55,14 @@
 		mainScrollY: number,
 		defaultPercent: string = '0%'
 	) {
-		if (mainHeight === undefined || Math.abs(mainHeight) < 0.01) {
+		if (mainHeight === undefined || Math.abs(mainHeight) < EPS) {
 			return defaultPercent;
 		}
 		return `${Math.min(100, Math.max((mainScrollY / mainHeight) * 100, 0)).toFixed(2)}%`;
 	}
 
 	function springCenterOffset(mainHeight: number | undefined, mainScrollY: number) {
-		if (mainHeight === undefined || Math.abs(mainHeight) < 0.01) {
+		if (mainHeight === undefined || Math.abs(mainHeight) < EPS) {
 			return 0;
 		}
 		return Math.min(0.5, mainScrollY / mainHeight);
@@ -61,6 +80,9 @@
 			mainScrollY = containerEl.scrollTop;
 			if (springEngine) {
 				springEngine.springPosition = springCenterOffset(window.innerHeight, mainScrollY);
+				springEngine.springDamping = data.isConspiracy
+					? 2 * Math.sqrt(M * K)
+					: computeDamping(window.innerHeight, overshoot);
 			}
 		}
 	}
@@ -71,7 +93,12 @@
 		const springX = springCenterOffset(window.innerHeight, mainScrollY);
 		springEngine = new JsSpringEngine(
 			{ x: 0, v: 0 },
-			{ x: springX, m: 1, d: data.isConspiracy ? 20 : 15, k: 100 },
+			{
+				x: springX,
+				m: M,
+				d: data.isConspiracy ? 2 * Math.sqrt(M * K) : computeDamping(window.innerHeight, overshoot),
+				k: K
+			},
 			{ tmax: 0.1 }
 		);
 		const animationId = requestAnimationFrame(firstFrame);

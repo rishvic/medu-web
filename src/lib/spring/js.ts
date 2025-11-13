@@ -44,12 +44,12 @@ class JsSpringEngine implements SpringEngine<number> {
 		return this._o.x;
 	}
 
-	get springPosition() {
-		return this._s.x;
-	}
-
 	set springPosition(x: number) {
 		this._s.x = x;
+	}
+
+	set springDamping(d: number) {
+		this._s.d = d;
 	}
 
 	_f1(v: number) {
