@@ -49,7 +49,7 @@ export const load: PageServerLoad = async ({ setHeaders }) => {
 	});
 
 	const standardCacheControl = IS_PROD_DEPLOYMENT
-		? 'public, max-age=86400, s-maxage=300'
+		? 'public, max-age=86400, s-maxage=1'
 		: 'no-store';
 
 	setHeaders({
