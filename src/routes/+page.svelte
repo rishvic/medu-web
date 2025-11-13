@@ -110,8 +110,8 @@
 	style:--app-bar-bg-dark={`rgb(from var(--color-deep-ocean) r g b / ${computePercent(innerHeight.current, mainScrollY)})`}
 >
 	<div class="h-screen snap-start bg-(--app-bar-bg-light) dark:bg-(--app-bar-bg-dark)"></div>
-	<div class="h-screen snap-start">
-		<div class="flex h-20 w-screen bg-(--app-bar-bg-light) md:h-24 dark:bg-(--app-bar-bg-dark)">
+	<div class="flex h-screen w-screen snap-start flex-col">
+		<div class="flex h-20 min-w-screen bg-(--app-bar-bg-light) md:h-24 dark:bg-(--app-bar-bg-dark)">
 			<header class="flex flex-1">
 				<nav class="flex flex-1 justify-center">
 					<div
