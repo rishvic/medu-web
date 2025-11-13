@@ -2,7 +2,6 @@
 	import type { PageProps } from './$types';
 	import { onMount } from 'svelte';
 	import { on } from 'svelte/events';
-	import { MediaQuery } from 'svelte/reactivity';
 	import { innerHeight } from 'svelte/reactivity/window';
 	import HandEye from 'phosphor-svelte/lib/HandEye';
 	import HandPeace from 'phosphor-svelte/lib/HandPeace';
@@ -30,37 +29,38 @@
 		requestAnimationFrame((t) => animate(t));
 	}
 
-	const medium = new MediaQuery('min-width: 48rem');
-
 	let mainScrollY = $state(0);
-	let headerHeight = $derived(medium.current ? 96 : 80);
 
-	function computePercent(mainHeight: number | undefined, mainScrollY: number) {
+	function computePercent(
+		mainHeight: number | undefined,
+		mainScrollY: number,
+		defaultPercent: string = '0%'
+	) {
 		if (mainHeight === undefined || Math.abs(mainHeight) < 0.01) {
-			return '0%';
+			return defaultPercent;
 		}
 		return `${Math.min(100, Math.max((mainScrollY / mainHeight) * 100, 0)).toFixed(2)}%`;
 	}
 
-	function computeOffset(
-		springPosition: number,
-		mainHeight: number | undefined,
-		headerHeight: number
-	) {
-		if (mainHeight === undefined) {
-			return `calc(-50vh - ${headerHeight / 2}px)`;
+	function springCenterOffset(mainHeight: number | undefined, mainScrollY: number) {
+		if (mainHeight === undefined || Math.abs(mainHeight) < 0.01) {
+			return 0;
 		}
-		return `calc(-50vh - ${headerHeight / 2}px + ${(100 * springPosition).toFixed(4)}vh)`;
+		return Math.min(0.5, mainScrollY / mainHeight);
+	}
+
+	function computeOffset(springPosition: number, mainHeight: number | undefined) {
+		if (mainHeight === undefined) {
+			return `calc(-50vh)`;
+		}
+		return `calc(-50vh + ${(100 * springPosition).toFixed(4)}vh)`;
 	}
 
 	function measureVariables() {
 		if (containerEl) {
 			mainScrollY = containerEl.scrollTop;
 			if (springEngine) {
-				springEngine.springPosition = Math.min(
-					mainScrollY / window.innerHeight,
-					0.5 + headerHeight / (2 * window.innerHeight)
-				);
+				springEngine.springPosition = springCenterOffset(window.innerHeight, mainScrollY);
 			}
 		}
 	}
@@ -68,13 +68,10 @@
 	onMount(() => {
 		measureVariables();
 
-		const springX = Math.min(
-			mainScrollY / window.innerHeight,
-			0.5 + headerHeight / (2 * window.innerHeight)
-		);
+		const springX = springCenterOffset(window.innerHeight, mainScrollY);
 		springEngine = new JsSpringEngine(
 			{ x: 0, v: 0 },
-			{ x: springX, m: 1, d: data.isConspiracy ? 25 : 20, k: 156.25 },
+			{ x: springX, m: 1, d: data.isConspiracy ? 20 : 15, k: 100 },
 			{ tmax: 0.1 }
 		);
 		const animationId = requestAnimationFrame(firstFrame);
@@ -105,13 +102,23 @@
 	onscroll={measureVariables}
 	id="main-container"
 	class="relative h-screen snap-y snap-proximity overflow-y-scroll scroll-smooth md:snap-mandatory"
-	style:--logo-offset={computeOffset(logoPosition, innerHeight.current, headerHeight)}
-	style:--app-bar-bg-light={`rgb(from var(--color-icy-wisp) r g b / ${computePercent(innerHeight.current, mainScrollY)})`}
-	style:--app-bar-bg-dark={`rgb(from var(--color-deep-ocean) r g b / ${computePercent(innerHeight.current, mainScrollY)})`}
+	style:--logo-offset={computeOffset(logoPosition, innerHeight.current)}
 >
-	<div class="h-screen snap-start bg-(--app-bar-bg-light) dark:bg-(--app-bar-bg-dark)"></div>
+	<div
+		class="flex h-screen snap-start items-center justify-center bg-(--app-light-bgcolor) dark:bg-(--app-dark-bgcolor)"
+		style:--app-light-bgcolor={`rgb(from var(--color-icy-wisp) r g b / ${computePercent(innerHeight.current, mainScrollY)})`}
+		style:--app-dark-bgcolor={`rgb(from var(--color-deep-ocean) r g b / ${computePercent(innerHeight.current, mainScrollY)})`}
+	>
+		<div class="mb-[1em] shrink pb-4 font-display text-5xl md:text-7xl">
+			<h1>Hey There!</h1>
+		</div>
+	</div>
 	<div class="flex h-screen w-screen snap-start flex-col">
-		<div class="flex h-20 min-w-screen bg-(--app-bar-bg-light) md:h-24 dark:bg-(--app-bar-bg-dark)">
+		<div
+			class="flex h-20 min-w-screen bg-(--app-light-bgcolor) md:h-24 dark:bg-(--app-dark-bgcolor)"
+			style:--app-light-bgcolor={`rgb(from var(--color-icy-wisp) r g b / ${computePercent(innerHeight.current, mainScrollY, '100%')})`}
+			style:--app-dark-bgcolor={`rgb(from var(--color-deep-ocean) r g b / ${computePercent(innerHeight.current, mainScrollY, '100%')})`}
+		>
 			<header class="flex flex-1">
 				<nav class="flex flex-1 justify-center">
 					<div
@@ -121,14 +128,12 @@
 							<HandEye
 								color="currentColor"
 								weight="fill"
-								size={headerHeight - 16}
 								class="h-16 w-16 translate-y-(--logo-offset) text-golden-zing md:h-20 md:w-20"
 							/>
 						{:else}
 							<HandPeace
 								color="currentColor"
 								weight="fill"
-								size={headerHeight - 16}
 								class="h-16 w-16 translate-y-(--logo-offset) text-golden-zing md:h-20 md:w-20"
 							/>
 						{/if}
