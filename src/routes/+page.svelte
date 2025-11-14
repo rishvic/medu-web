@@ -140,25 +140,26 @@
 			<h1>Hey There!</h1>
 		</div>
 	</div>
-	<div class="flex h-screen w-screen snap-start flex-col">
+	<div class="flex h-screen w-screen snap-start flex-col items-center justify-start">
 		<div
-			class="flex h-20 min-w-screen bg-(--app-light-bgcolor) md:h-24 dark:bg-(--app-dark-bgcolor)"
+			class="mb-4 flex min-w-screen justify-end bg-(--app-light-bgcolor) pt-(--inset-top) dark:bg-(--app-dark-bgcolor)"
 			style:--app-light-bgcolor={`rgb(from var(--color-icy-wisp) r g b / ${computePercent(innerHeight.current, mainScrollY, '100%')})`}
 			style:--app-dark-bgcolor={`rgb(from var(--color-deep-ocean) r g b / ${computePercent(innerHeight.current, mainScrollY, '100%')})`}
+			style:--inset-top="env(safe-area-inset-top, 0)"
 		>
-			<header class="flex flex-1">
-				<nav class="flex flex-1 justify-center">
-					<div
-						class="flex max-w-7xl flex-1 flex-row items-center justify-center px-2 sm:px-6 lg:px-8"
-					>
+			<header class="flex min-w-screen justify-center">
+				<nav class="flex min-h-20 grow items-center justify-between md:min-h-24">
+					<div id="hero-svg-container" class="flex grow items-center justify-center">
 						{#if data.isConspiracy}
 							<HandEye
+								id="hero-svg"
 								color="currentColor"
 								weight="fill"
 								class="h-16 w-16 translate-y-(--logo-offset) text-golden-zing md:h-20 md:w-20"
 							/>
 						{:else}
 							<HandPeace
+								id="hero-svg"
 								color="currentColor"
 								weight="fill"
 								class="h-16 w-16 translate-y-(--logo-offset) text-golden-zing md:h-20 md:w-20"
@@ -168,7 +169,7 @@
 				</nav>
 			</header>
 		</div>
-		<main>
+		<main class="container">
 			<p>
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget dignissim magna,
 				et eleifend elit. Aenean interdum libero eu nulla tempor ullamcorper. Donec id nibh eget
