@@ -119,7 +119,7 @@
 		name="description"
 		content={data.isConspiracy
 			? 'What you were meant to see is a lie. This is the unredacted digital archive of Rishvic. We see you.'
-			: 'The digital memory of Rishvic. This is my chosen legacy.'}
+			: 'The digital memory of Rishvic.'}
 	/>
 	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 	{@html data.myData}
