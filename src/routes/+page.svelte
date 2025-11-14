@@ -1,4 +1,5 @@
 <script lang="ts">
+	import '@fontsource/pacifico/latin.css';
 	import type { PageProps } from './$types';
 	import { onMount } from 'svelte';
 	import { on } from 'svelte/events';
@@ -136,8 +137,8 @@
 		style:--app-light-bgcolor={`rgb(from var(--color-icy-wisp) r g b / ${computePercent(innerHeight.current, mainScrollY)})`}
 		style:--app-dark-bgcolor={`rgb(from var(--color-deep-ocean) r g b / ${computePercent(innerHeight.current, mainScrollY)})`}
 	>
-		<div class="mb-[1em] shrink pb-4 font-display text-5xl md:text-7xl">
-			<h1>Hey There!</h1>
+		<div class="mb-[1em] shrink pb-4 text-5xl md:text-7xl">
+			<h1 class="font-[Pacifico]">Hey There!</h1>
 		</div>
 	</div>
 	<div class="flex h-screen w-screen snap-start flex-col items-center justify-start">
