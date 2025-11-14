@@ -130,9 +130,10 @@
 	id="main-container"
 	class="relative h-screen snap-y snap-proximity overflow-y-scroll scroll-smooth md:snap-mandatory"
 	style:--logo-offset={computeOffset(logoPosition, innerHeight.current)}
+	style:--inset-top="env(safe-area-inset-top, 0)"
 >
 	<div
-		class="flex h-screen snap-start items-center justify-center bg-(--app-light-bgcolor) dark:bg-(--app-dark-bgcolor)"
+		class="flex h-screen snap-start items-center justify-center bg-(--app-light-bgcolor) pt-(--inset-top) dark:bg-(--app-dark-bgcolor)"
 		style:--app-light-bgcolor={`rgb(from var(--color-icy-wisp) r g b / ${computePercent(innerHeight.current, mainScrollY)})`}
 		style:--app-dark-bgcolor={`rgb(from var(--color-deep-ocean) r g b / ${computePercent(innerHeight.current, mainScrollY)})`}
 	>
@@ -145,7 +146,6 @@
 			class="mb-4 flex min-w-screen justify-end bg-(--app-light-bgcolor) pt-(--inset-top) dark:bg-(--app-dark-bgcolor)"
 			style:--app-light-bgcolor={`rgb(from var(--color-icy-wisp) r g b / ${computePercent(innerHeight.current, mainScrollY, '100%')})`}
 			style:--app-dark-bgcolor={`rgb(from var(--color-deep-ocean) r g b / ${computePercent(innerHeight.current, mainScrollY, '100%')})`}
-			style:--inset-top="env(safe-area-inset-top, 0)"
 		>
 			<header class="flex min-w-screen justify-center">
 				<nav class="flex min-h-20 grow items-center justify-between md:min-h-24">
