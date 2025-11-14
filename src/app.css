@@ -15,4 +15,6 @@
 	--color-smoky-blue: #8ca4b7;
 
 	--color-golden-zing: #ffc72c;
+
+	--spacing-safe-top: env(safe-area-inset-top, 0px);
 }
