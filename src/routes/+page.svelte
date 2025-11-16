@@ -138,7 +138,12 @@
 		style:--app-dark-bgcolor={`rgb(from var(--color-deep-ocean) r g b / ${computePercent(innerHeight.current, mainScrollY)})`}
 	>
 		<div class="mb-[1em] shrink pb-4 text-5xl md:text-7xl">
-			<h1 class="font-[Pacifico]">Hey There!</h1>
+			<h1
+				class="font-(family-name:--font-display)"
+				style:--font-display="Pacifico, var(--font-sans)"
+			>
+				Hey There!
+			</h1>
 		</div>
 	</div>
 	<div class="flex h-screen w-screen snap-start flex-col items-center justify-start">
