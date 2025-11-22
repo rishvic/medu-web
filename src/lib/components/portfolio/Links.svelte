@@ -49,8 +49,8 @@
 		</div>
 
 		<div class="mt-12 md:mt-16 text-center">
-			<p class="text-tangerine/50 text-xs md:text-sm">
-				Forged by passion and a serious sleep deficit 😴
+			<p class="text-tangerine/70 text-xs md:text-sm">
+				<span class="text-tangerine/50">Forged by passion and a serious sleep deficit</span> 😴
 			</p>
 		</div>
 	</div>
