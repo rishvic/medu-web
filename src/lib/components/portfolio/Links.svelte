@@ -3,8 +3,6 @@
 	import Envelope from 'phosphor-svelte/lib/Envelope';
 	import GithubLogo from 'phosphor-svelte/lib/GithubLogo';
 	import LinkedinLogo from 'phosphor-svelte/lib/LinkedinLogo';
-	// import Plugs from 'phosphor-svelte/lib/Plugs';
-	import PlugsConnected from 'phosphor-svelte/lib/PlugsConnected';
 	import ExternalLink from './ExternalLink.svelte';
 </script>
 
@@ -16,7 +14,7 @@
 			>
 				<p class="text-xs tracking-widest uppercase">Connect</p>
 			</div>
-			<h2 class="text-tangerine mb-4 text-4xl md:text-5xl lg:text-6xl">Let's Build Together</h2>
+			<h2 class="text-tangerine mb-4 text-4xl md:text-5xl lg:text-6xl">Beyond Here…</h2>
 			<p class="text-tangerine/70 text-base md:text-lg lg:text-xl">
 				Find me across the web or drop me a message
 			</p>

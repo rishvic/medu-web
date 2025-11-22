@@ -10,7 +10,10 @@
 			>
 				<p class="text-xs tracking-widest uppercase">Projects</p>
 			</div>
-			<h2 class="text-tangerine text-4xl md:text-5xl lg:text-6xl">My Showcase</h2>
+			<!-- Replace with 'Proof That I&#x27m Actually Productive' once I actually add projects. -->
+			<h2 class="text-tangerine text-4xl md:text-5xl lg:text-6xl">
+				Stuff I&#x27;ve Built <span class="md:text-tangerine/70">(So&nbsp;Far)</span>
+			</h2>
 		</div>
 
 		<div class="py-16 md:py-24 flex items-center justify-center">
