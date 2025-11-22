@@ -25,9 +25,8 @@
 					<p class="text-base md:text-lg">
 						I follow Hollywood &amp; Anime on the regular. Trying to get into books (but failing
 						hard). Also, bring emoticons back.
-						<br />
-						щ(ﾟДﾟщ) (屮ﾟДﾟ)屮
 					</p>
+					<p>щ(ﾟДﾟщ) (屮ﾟДﾟ)屮</p>
 				</div>
 			</div>
 		</div>
