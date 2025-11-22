@@ -30,7 +30,7 @@
 	</div>
 
 	<div
-		class="md:bottom-(--offset-bottom-md) -translate x-1/2 animate-bounce absolute bottom-(--offset-bottom) left-1/2"
+		class="md:bottom-(--offset-bottom-md) -translate x-1/2 motion-safe:animate-bounce absolute bottom-(--offset-bottom) left-1/2"
 		style:--offset-bottom="calc(var(--spacing-safe-bottom) + var(--spacing)*8)"
 		style:--offset-bottom-md="calc(var(--spacing-safe-bottom) + var(--spacing)*12)"
 	>
