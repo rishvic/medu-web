@@ -1,19 +1,22 @@
 import type { PageServerLoad } from './$types';
+import { DateTime } from 'luxon';
 import type { ProfilePage } from 'schema-dts';
 import { jsonLd } from '$lib/server/jsonLd';
 import { DATE_CREATED, DATE_MODIFIED, IS_PROD_DEPLOYMENT } from '$lib/server/constants';
 
+function getMotd(timestamp: DateTime) {
+	const annualMessages: Record<string, string> = {
+		'0430': 'Happy Birthday, Brightest, Boldest Mom! ✨',
+		'0705': 'Mere Bhai da Budday hai! 🕺',
+		'0731': 'Investing in you. Happy Birthday, Dad! 🚀',
+		'1122': 'Happy Anniversary, Mom & Dad! 🪢',
+		'1219': 'The Cake is a Lie 🎂'
+	};
+
+	return annualMessages[timestamp.setZone('Asia/Kolkata').toFormat('MMdd')] ?? 'Grinding away…';
+}
+
 export const load: PageServerLoad = async ({ setHeaders }) => {
-	let isConspiracy = false;
-
-	try {
-		const crypto = await import('node:crypto');
-		const randomBytes = crypto.webcrypto.getRandomValues(new Uint16Array(1));
-		isConspiracy = (randomBytes[0] & 0xfff) === 42;
-	} catch (err) {
-		console.warn(new Error('Error importing node:crypto', { cause: err }));
-	}
-
 	const myData = jsonLd<ProfilePage>({
 		'@context': 'https://schema.org',
 		'@type': 'ProfilePage',
@@ -48,16 +51,13 @@ export const load: PageServerLoad = async ({ setHeaders }) => {
 		}
 	});
 
+	const motd = getMotd(DateTime.now());
+
 	const standardCacheControl = IS_PROD_DEPLOYMENT
-		? 'public, max-age=86400, s-maxage=1'
+		? 'public, max-age=3600, s-maxage=300'
 		: 'no-store';
 
-	setHeaders({
-		'Cache-Control': isConspiracy ? 'no-store' : standardCacheControl
-	});
+	setHeaders({ 'Cache-Control': standardCacheControl });
 
-	return {
-		isConspiracy,
-		myData
-	};
+	return { myData, motd };
 };

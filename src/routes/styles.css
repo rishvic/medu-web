@@ -1,0 +1,61 @@
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/syne';
+
+@import 'tailwindcss';
+
+@theme {
+	--font-syne: 'Syne Variable';
+	--font-inter: 'Inter Variable';
+	--font-display: var(--font-syne), var(--font-sans);
+	--default-font-family: var(--font-inter), var(--font-sans);
+
+	--color-deep-aubergine: #1a0b2e;
+	--color-tangerine: #ff8e53;
+}
+
+@layer base {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: var(--font-display);
+	}
+
+	h1 {
+		font-size: 4.5rem;
+		font-weight: 800;
+		line-height: 1;
+		letter-spacing: -0.02em;
+	}
+
+	h2 {
+		font-size: 3rem;
+		font-weight: 700;
+		line-height: 1.1;
+		letter-spacing: -0.01em;
+	}
+
+	h3 {
+		font-size: 2rem;
+		font-weight: 700;
+		line-height: 1.2;
+	}
+
+	h4 {
+		font-size: 1.5rem;
+		font-weight: 600;
+		line-height: 1.3;
+	}
+
+	p {
+		font-size: 1.125rem;
+		line-height: 1.7;
+		font-weight: 400;
+	}
+
+	a {
+		font-weight: 500;
+	}
+}
