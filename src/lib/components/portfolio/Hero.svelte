@@ -6,6 +6,13 @@
 	}
 
 	const { motd }: Props = $props();
+
+	const scrollToAbout = () => {
+		const element = document.getElementById('about');
+		if (element) {
+			element.scrollIntoView({ behavior: 'smooth' });
+		}
+	};
 </script>
 
 <section id="hero" class="px-6 pt-20 pb-16 relative flex min-h-screen items-center justify-center">
@@ -29,11 +36,13 @@
 		</div>
 	</div>
 
-	<div
+	<button
+		aria-label="About"
+		onclick={() => scrollToAbout()}
 		class="md:bottom-(--offset-bottom-md) -translate x-1/2 motion-safe:animate-bounce absolute bottom-(--offset-bottom) left-1/2"
 		style:--offset-bottom="calc(var(--spacing-safe-bottom) + var(--spacing)*8)"
 		style:--offset-bottom-md="calc(var(--spacing-safe-bottom) + var(--spacing)*12)"
 	>
 		<ArrowDown class="w-5 h-5 md:w-6 md:h-6 text-tangerine" />
-	</div>
+	</button>
 </section>

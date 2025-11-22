@@ -46,18 +46,11 @@
 					Projects
 				</button>
 				<button
-					aria-label="Links"
-					onclick={() => scrollToSection('links')}
-					class="text-tangerine/70 hover:text-tangerine transition-colors"
-				>
-					Links
-				</button>
-				<button
-					aria-label="Contact"
+					aria-label="Connect"
 					onclick={() => scrollToSection('links')}
 					class="px-6 py-2 bg-tangerine text-deep-aubergine hover:bg-tangerine/90 rounded-full transition-colors"
 				>
-					Contact
+					Connect
 				</button>
 			</div>
 
@@ -92,18 +85,11 @@
 					Projects
 				</button>
 				<button
-					aria-label="Links"
-					onclick={() => scrollToSection('links')}
-					class="text-tangerine/70 hover:text-tangerine py-2 block w-full text-left transition-colors"
-				>
-					Links
-				</button>
-				<button
-					aria-label="Contact"
+					aria-label="Connect"
 					onclick={() => scrollToSection('links')}
 					class="px-6 py-2 bg-tangerine text-deep-aubergine hover:bg-tangerine/90 transition-colors-mt-2 w-full rounded-full"
 				>
-					Contact
+					Connect
 				</button>
 			</div>
 		{/if}
