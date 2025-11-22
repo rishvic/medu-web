@@ -61,4 +61,20 @@
 	a {
 		font-weight: 500;
 	}
+
+	html {
+		scroll-snap-type: y proximity;
+
+		scroll-behavior: smooth;
+	}
+
+	section {
+		scroll-snap-align: start;
+	}
+
+	@media (width >= 48rem) {
+		html {
+			scroll-snap-type: y mandatory;
+		}
+	}
 }
