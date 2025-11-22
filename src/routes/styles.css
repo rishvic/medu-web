@@ -13,6 +13,7 @@
 	--color-tangerine: #ff8e53;
 
 	--spacing-safe-top: env(safe-area-inset-top, 0px);
+	--spacing-safe-bottom: env(safe-area-inset-bottom, 0px);
 }
 
 @layer base {

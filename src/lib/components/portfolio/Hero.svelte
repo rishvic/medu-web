@@ -29,7 +29,11 @@
 		</div>
 	</div>
 
-	<div class="bottom-8 md:bottom-12 -translate x-1/2 animate-bounce absolute left-1/2">
+	<div
+		class="md:bottom-(--offset-bottom-md) -translate x-1/2 animate-bounce absolute bottom-(--offset-bottom) left-1/2"
+		style:--offset-bottom="calc(var(--spacing-safe-bottom) + var(--spacing)*8)"
+		style:--offset-bottom-md="calc(var(--spacing-safe-bottom) + var(--spacing)*12)"
+	>
 		<ArrowDown class="w-5 h-5 md:w-6 md:h-6 text-tangerine" />
 	</div>
 </section>
