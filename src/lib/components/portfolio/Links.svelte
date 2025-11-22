@@ -33,16 +33,16 @@
 				description="Connect professionally"
 			/>
 			<ExternalLink
-				name="Fitness"
-				url="https://www.instagram.com/9to5_wali_body"
-				icon={Barbell}
-				description="Give my friends a follow!"
-			/>
-			<ExternalLink
 				name="Email"
 				url="mailto:hello@rishvic.net"
 				icon={Envelope}
 				description="Get in touch"
+			/>
+			<ExternalLink
+				name="Shoutout"
+				url="https://www.instagram.com/9to5_wali_body"
+				icon={Barbell}
+				description="Give my friends a follow!"
 			/>
 		</div>
 
