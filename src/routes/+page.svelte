@@ -1,6 +1,7 @@
 <script lang="ts">
 	import './styles.css';
 	import type { PageProps } from './$types';
+	import About from '$lib/components/portfolio/About.svelte';
 	import Hero from '$lib/components/portfolio/Hero.svelte';
 	import Navigation from '$lib/components/portfolio/Navigation.svelte';
 	import Links from '$lib/components/portfolio/Links.svelte';
@@ -19,6 +20,7 @@
 <div class="bg-deep-aubergine text-tangerine min-h-screen">
 	<Navigation />
 	<Hero motd={data.motd} />
+	<About />
 	<Projects />
 	<Links />
 </div>

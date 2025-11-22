@@ -21,6 +21,7 @@
 	<div class="max-w-7xl px-6 py-4 mx-auto">
 		<div class="flex items-center justify-between">
 			<button
+				aria-label="Home"
 				onclick={() => scrollToSection('hero')}
 				class="text-tangerine tracking-widest uppercase">Hello there.</button
 			>
