@@ -5,7 +5,7 @@ import { jsonLd } from '$lib/server/jsonLd';
 import { DATE_CREATED, DATE_MODIFIED, IS_PROD_DEPLOYMENT } from '$lib/server/constants';
 
 function getMotd(timestamp: DateTime) {
-	const annualMessages: Record<string, string> = {
+	const annualMessages: Record<string, string | undefined> = {
 		'0430': 'Happy Birthday, Brightest, Boldest Mom! ✨',
 		'0705': 'Mere Bhai da Budday hai! 🕺',
 		'0731': 'Investing in you. Happy Birthday, Dad! 🚀',
@@ -13,7 +13,7 @@ function getMotd(timestamp: DateTime) {
 		'1219': 'The Cake is a Lie 🎂'
 	};
 
-	return annualMessages[timestamp.setZone('Asia/Kolkata').toFormat('MMdd')] ?? 'Grinding away…';
+	return annualMessages[timestamp.setZone('Asia/Kolkata').toFormat('MMdd')];
 }
 
 export const load: PageServerLoad = async ({ setHeaders }) => {
