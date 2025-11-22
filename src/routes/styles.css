@@ -11,6 +11,8 @@
 
 	--color-deep-aubergine: #1a0b2e;
 	--color-tangerine: #ff8e53;
+
+	--spacing-safe-top: env(safe-area-inset-top, 0px);
 }
 
 @layer base {

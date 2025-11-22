@@ -18,7 +18,10 @@
 <nav
 	class="top-0 left-0 right-0 backdrop-blur-lg bg-deep-aubergine/80 border-tangerine/10 fixed z-50 border-b"
 >
-	<div class="max-w-7xl px-6 py-4 mx-auto">
+	<div
+		class="max-w-7xl px-6 py-4 mx-auto pt-(--safe-top-value)"
+		style:--safe-top-value="max(var(--spacing-safe-top), calc(var(--spacing) * 4))"
+	>
 		<div class="flex items-center justify-between">
 			<button
 				aria-label="Home"
