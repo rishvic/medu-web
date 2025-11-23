@@ -16,7 +16,7 @@ function getMotd(timestamp: DateTime) {
 	return annualMessages[timestamp.setZone('Asia/Kolkata').toFormat('MMdd')];
 }
 
-export const load: PageServerLoad = async ({ setHeaders }) => {
+export const load: PageServerLoad = async () => {
 	const myData = jsonLd<ProfilePage>({
 		'@context': 'https://schema.org',
 		'@type': 'ProfilePage',
@@ -52,12 +52,6 @@ export const load: PageServerLoad = async ({ setHeaders }) => {
 	});
 
 	const motd = getMotd(DateTime.now());
-
-	const standardCacheControl = IS_PROD_DEPLOYMENT
-		? 'public, max-age=3600, s-maxage=300'
-		: 'no-store';
-
-	setHeaders({ 'Cache-Control': standardCacheControl });
 
 	return { myData, motd };
 };
