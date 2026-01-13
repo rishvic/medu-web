@@ -1,5 +1,4 @@
 <script lang="ts">
-	import './styles.css';
 	import type { PageProps } from './$types';
 	import About from '$lib/components/portfolio/About.svelte';
 	import Hero from '$lib/components/portfolio/Hero.svelte';

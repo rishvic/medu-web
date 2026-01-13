@@ -1,5 +1,6 @@
 <script lang="ts">
-	import '../app.css';
+	import '../../app.css';
+	import './layout.css';
 	import { onMount } from 'svelte';
 	import { PUBLIC_PLAUSIBLE_DOMAIN } from '$env/static/public';
 
