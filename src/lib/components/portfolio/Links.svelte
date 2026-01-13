@@ -50,6 +50,9 @@
 			<p class="text-tangerine/70 text-xs md:text-sm">
 				<span class="text-tangerine/50">Forged by passion and a serious sleep deficit</span> 😴
 			</p>
+			<p class="text-tangerine/50 text-xs md:text-sm">
+				<a href="https://www.flaticon.com/free-icons/home" title="home icons">Home icons created by Freepik - Flaticon</a>
+			</p>
 		</div>
 	</div>
 </section>
