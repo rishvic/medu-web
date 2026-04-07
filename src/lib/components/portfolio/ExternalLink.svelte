@@ -7,15 +7,22 @@
 		url: string;
 		icon: Component;
 		description: string;
+		rel?: string;
 	}
 
-	let { name, url, icon: IconComponent, description }: Props = $props();
+	let {
+		name,
+		url,
+		icon: IconComponent,
+		description,
+		rel = 'external noreferrer noopener'
+	}: Props = $props();
 </script>
 
 <a
 	href={url}
 	target="_blank"
-	rel="external noreferrer noopener"
+	{rel}
 	class="group bg-tangerine/5 border-tangerine/20 rounded-2xl p-6 md:p-8 hover:border-tangerine hover:bg-tangerine gap-4 md:gap-6 flex items-center border-2 transition-all duration-300"
 >
 	<div

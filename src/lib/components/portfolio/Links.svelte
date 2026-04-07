@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Barbell from 'phosphor-svelte/lib/Barbell';
+	import Hash from 'phosphor-svelte/lib/Hash';
 	import Envelope from 'phosphor-svelte/lib/Envelope';
 	import GithubLogo from 'phosphor-svelte/lib/GithubLogo';
 	import LinkedinLogo from 'phosphor-svelte/lib/LinkedinLogo';
@@ -39,10 +39,11 @@
 				description="Get in touch"
 			/>
 			<ExternalLink
-				name="Shoutout"
-				url="https://www.instagram.com/cali_ritik"
-				icon={Barbell}
-				description="Give my friends a follow!"
+				name="Mastodon"
+				rel="me"
+				url="https://mastodon.social/@rishvic"
+				icon={Hash}
+				description="Listen to my rants"
 			/>
 		</div>
 

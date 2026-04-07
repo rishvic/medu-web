@@ -6,14 +6,17 @@
 @theme {
 	--font-syne: 'Syne Variable';
 	--font-inter: 'Inter Variable';
-	--font-display: var(--font-syne), var(--font-sans);
-	--default-font-family: var(--font-inter), var(--font-sans);
 
 	--color-deep-aubergine: #1a0b2e;
 	--color-tangerine: #ff8e53;
 
 	--spacing-safe-top: env(safe-area-inset-top, 0px);
 	--spacing-safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+@theme inline {
+	--font-display: var(--font-syne), var(--font-sans);
+	--default-font-family: var(--font-inter), var(--font-sans);
 }
 
 @layer base {
@@ -23,7 +26,7 @@
 	h4,
 	h5,
 	h6 {
-		font-family: var(--font-display);
+		font-family: var(--font-display), sans-serif;
 	}
 
 	h1 {
