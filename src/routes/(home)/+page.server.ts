@@ -30,11 +30,6 @@ export const load: PageServerLoad = async () => {
 			gender: 'https://schema.org/Male',
 			url: 'https://www.rishvic.net/',
 			description: 'A rational human.',
-			jobTitle: 'Software Engineer 2',
-			worksFor: {
-				'@type': 'Organization',
-				name: 'LiveSwitch'
-			},
 			alumniOf: {
 				'@type': 'EducationalOrganization',
 				name: 'Indian Institute of Technology Bhubaneswar'
@@ -46,7 +41,8 @@ export const load: PageServerLoad = async () => {
 			],
 			sameAs: [
 				'https://www.linkedin.com/in/rishvic-pushpakaran-3ab69a206/',
-				'https://github.com/rishvic'
+				'https://github.com/rishvic',
+				'https://mastodon.social/@rishvic'
 			]
 		}
 	});
