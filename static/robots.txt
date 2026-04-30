@@ -1,3 +1,7 @@
 # allow crawling everything by default
 User-agent: *
 Disallow:
+
+License: https://www.rishvic.net/license.xml
+
+Sitemap: https://www.rishvic.net/sitemap.xml
